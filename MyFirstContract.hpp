@@ -5,8 +5,8 @@ using namespace eosio;
 CONTRACT MyFirstContract : public eosio::contract {
 
   private:
-
-    struct user_info {
+    
+    struct [[eosio::table]] user_info {
       name            name;
       uint16_t        win_count = 0;
       uint16_t        lost_count = 0;
@@ -16,7 +16,7 @@ CONTRACT MyFirstContract : public eosio::contract {
 
     typedef eosio::multi_index<name("users"), user_info> users_table;
 
-    //users_table _users;
+    users_table _users;
 
   public:
     using contract::contract;
